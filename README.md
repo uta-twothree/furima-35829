@@ -25,12 +25,12 @@
 | -------------- | ------------ | ------------------------------ |
 | name           | string       | null: false                    |
 | description    | text         | null: false                    |
-| category_id    | intger       | null: false                    |
-| condition_id   | intger       | null: false                    |
-| ship_charge_id | intger       | null: false                    |
-| ship_from_id   | intger       | null: false                    |
-| ship_days_id   | intger       | null: false                    |
-| price          | intger       | null: false                    |
+| category_id    | integer      | null: false                    |
+| condition_id   | integer      | null: false                    |
+| ship_charge_id | integer      | null: false                    |
+| ship_from_id   | integer      | null: false                    |
+| ship_days_id   | integer      | null: false                    |
+| price          | integer      | null: false                    |
 | user           | references   | null: false, foreign_key: true |
 
 ### Association
@@ -70,7 +70,7 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | postcode        | string     | null: false                    |
-| ship_from_id    | intger     | null: false                    |
+| ship_from_id    | integer    | null: false                    |
 | city            | string     | null: false                    |
 | block           | string     | null: false                    |
 | building        | string     |                                |
