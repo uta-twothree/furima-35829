@@ -2,8 +2,8 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
-  belongs_to :Ship_charge
-  belongs_to :Ship_from
+  belongs_to :ship_charge
+  belongs_to :ship_from
   belongs_to :ship_days
 
   has_one_attached :image
@@ -15,7 +15,7 @@ class Item < ApplicationRecord
     validates :image
     with_options numericality: { other_than: 1 } do
       validates :category_id
-      validates :condition
+      validates :condition_id
       validates :ship_charge_id
       validates :ship_from_id
       validates :ship_days_id
