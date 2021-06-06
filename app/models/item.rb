@@ -13,7 +13,7 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :image
-    with_options numericality: { other_than: 1, message: ' cannnot be blank' } do
+    with_options numericality: { other_than: 1, message: 'cannnot be blank' } do
       validates :category_id
       validates :condition_id
       validates :ship_charge_id

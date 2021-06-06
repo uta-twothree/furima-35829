@@ -37,10 +37,22 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
+      it 'categoryのidが1の時は登録できない' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category cannnot be blank")
+      end
+
       it 'conditionが空では登録できない' do
         @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
+      end
+
+      it 'conditionのidが1の時は登録できない' do
+        @item.condition_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition cannnot be blank")
       end
 
       it 'ship_chargeが空では登録できない' do
@@ -49,16 +61,34 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Ship charge can't be blank")
       end
 
+      it 'ship_charge_idのidが1の時は登録できない' do
+        @item.ship_charge_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Ship charge cannnot be blank")
+      end
+
       it 'ship_fromが空では登録できない' do
         @item.ship_from_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship from can't be blank")
       end
 
+      it 'ship_from_idのidが1の時は登録できない' do
+        @item.ship_from_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Ship from cannnot be blank")
+      end
+
       it 'ship_daysが空では登録できない' do
         @item.ship_days_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Ship days can't be blank")
+      end
+
+      it 'ship_days_idのidが1の時は登録できない' do
+        @item.ship_days_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Ship days cannnot be blank")
       end
 
       it 'priceが空では登録できない' do
@@ -73,8 +103,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price is invalid. Input half-width characters')
       end
 
-      it 'priceは¥300~¥9999999の範囲でなければ登録できない' do
-        @item.price = '100'
+      it 'priceは299円以下では出品できない' do
+        @item.price = '299'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is out of setting range')
+      end
+
+      it 'priceは10000000円以上では出品できない' do
+        @item.price = '10000000'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is out of setting range')
       end
