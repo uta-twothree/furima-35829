@@ -45,7 +45,7 @@ RSpec.describe OrderAddress, type: :model do
       end
 
       it 'ship_from_idのidが1の時は登録できない' do
-        @order_address.ship_from_id = '1'
+        @order_address.ship_from_id = 1
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Ship from can't be blank")
       end

@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'categoryのidが1の時は登録できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category cannnot be blank')
       end
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'conditionのidが1の時は登録できない' do
-        @item.condition_id = '1'
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Condition cannnot be blank')
       end
@@ -62,7 +62,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'ship_charge_idのidが1の時は登録できない' do
-        @item.ship_charge_id = '1'
+        @item.ship_charge_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Ship charge cannnot be blank')
       end
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'ship_from_idのidが1の時は登録できない' do
-        @item.ship_from_id = '1'
+        @item.ship_from_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Ship from cannnot be blank')
       end
@@ -86,7 +86,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'ship_days_idのidが1の時は登録できない' do
-        @item.ship_days_id = '1'
+        @item.ship_days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Ship days cannnot be blank')
       end
