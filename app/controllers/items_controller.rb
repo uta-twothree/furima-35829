@@ -2,9 +2,10 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :move_to_root, only: :edit
 
   def index
-    @item = Item.all.order('created_at DESC')
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -42,6 +43,12 @@ class ItemsController < ApplicationController
   def move_to_index
     unless current_user.id == @item.user.id
       redirect_to action: :index
+    end
+  end
+
+  def move_to_root
+    if @item.order != nil
+      redirect_to root_path
     end
   end
 
