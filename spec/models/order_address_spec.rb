@@ -44,6 +44,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Ship from can't be blank")
       end
 
+      it 'ship_from_idのidが1の時は登録できない' do
+        @order_address.ship_from_id = '1'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Ship from can't be blank")
+      end
+
       it 'cityが空だと保存できないこと' do
         @order_address.city = ''
         @order_address.valid?
@@ -62,16 +68,16 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
-      it 'phone_numberが空だと保存できないこと' do
-        @order_address.phone_number = ''
-        @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
-      end
-
       it 'phone_numberは10桁以上11桁以下の場合でしか登録できない' do
         @order_address.phone_number = '12345'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone number is too short')
+        expect(@order_address.errors.full_messages).to include('Phone number is out of setting range')
+      end
+
+      it 'phone_numberが12桁以上の場合は登録できない' do
+        @order_address.phone_number = '111111111111'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone number is out of setting range')
       end
 
       it 'phone_numberは英数字混合では登録できない' do
