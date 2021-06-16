@@ -6,14 +6,14 @@ class Item < ApplicationRecord
   belongs_to :ship_from
   belongs_to :ship_days
 
-  has_one_attached :image
+  has_many_attached :images
   belongs_to :user
   has_one :order
 
   with_options presence: true do
     validates :name
     validates :description
-    validates :image
+    validates :images
     with_options numericality: { other_than: 1, message: 'cannnot be blank' } do
       validates :category_id
       validates :condition_id
