@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
       const blobImage = document.createElement('img');
       blobImage.setAttribute('src', blob);
+      blobImage.setAttribute('class', 'images')
 
       const inputHTML = document.createElement('input')
       inputHTML.setAttribute('id', `item_image_${imageElementNum}`)
